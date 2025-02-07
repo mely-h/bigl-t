@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/getRestos": {
+      "name": "/getRestos",
+      "lambdaFunction": "getRestos",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

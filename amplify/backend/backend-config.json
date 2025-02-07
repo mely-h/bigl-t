@@ -1,0 +1,64 @@
+{
+  "api": {
+    "resto": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getRestos"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "getRestos": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "restos"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_getRestos_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getRestos"
+        }
+      ]
+    },
+    "AMPLIFY_function_getRestos_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getRestos"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "avis": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "restos": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}
